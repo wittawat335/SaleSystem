@@ -3,8 +3,8 @@ using SaleSystem.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-CoreConfiguration.RegisterServices(builder.Services);
 InfraConfiguration.InjectDependence(builder.Services, builder.Configuration);
+CoreConfiguration.RegisterServices(builder.Services);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
