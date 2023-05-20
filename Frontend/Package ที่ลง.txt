@@ -9,6 +9,8 @@ Chart.js
 - npm i chart.js@3.9.1
 Xlsx
 - npm i xlsx@0.18.5
+GUID
+- npm i guid-typescript --save
 -----------------------------------------------------------
 environments
 - ng g environments
