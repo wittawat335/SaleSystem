@@ -6,23 +6,21 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/Layout/layout/layout.component';
-import { UserComponent } from './components/Layout/pages/user/user.component';
-import { ProductComponent } from './components/Layout/pages/product/product.component';
+import { SharedModule } from './shared/shared/shared.module';
+import { DashboardComponent } from './components/Layout/pages/dashboard/dashboard.component';
+import { ReportComponent } from './components/Layout/pages/report/report.component';
+import { SaleComponent } from './components/Layout/pages/sale/sale.component';
+import { SaleHistoryComponent } from './components/Layout/pages/sale-history/sale-history.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    LayoutComponent,
-    UserComponent,
-    ProductComponent
-  ],
+  declarations: [AppComponent, LoginComponent, LayoutComponent, DashboardComponent, ReportComponent, SaleComponent, SaleHistoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

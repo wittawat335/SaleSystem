@@ -1,4 +1,4 @@
-import { Response } from './../Interfaces/response';
+import { ResponseApi } from '../Interfaces/responseApi';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -13,23 +13,23 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  GetList(): Observable<Response> {
-    return this.http.get<Response>(this.urlApi);
+  GetList(): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(this.urlApi);
   }
 
-  Login(req: Login): Observable<Response> {
-    return this.http.post<Response>(`${this.urlApi}/Login`, req);
+  Login(req: Login): Observable<ResponseApi> {
+    return this.http.post<ResponseApi>(`${this.urlApi}/Login`, req);
   }
 
-  Register(req: Login): Observable<Response> {
-    return this.http.post<Response>(`${this.urlApi}/Register`, req);
+  Register(req: Login): Observable<ResponseApi> {
+    return this.http.post<ResponseApi>(`${this.urlApi}/Register`, req);
   }
 
-  Update(req: Login): Observable<Response> {
-    return this.http.put<Response>(`${this.urlApi}/Update`, req);
+  Update(req: Login): Observable<ResponseApi> {
+    return this.http.put<ResponseApi>(`${this.urlApi}/Update`, req);
   }
 
-  Delete(id: string): Observable<Response> {
-    return this.http.delete<Response>(`${this.urlApi}/${id}`);
+  Delete(id: string): Observable<ResponseApi> {
+    return this.http.delete<ResponseApi>(`${this.urlApi}/${id}`);
   }
 }
