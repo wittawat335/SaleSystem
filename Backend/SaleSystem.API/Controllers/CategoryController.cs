@@ -22,7 +22,7 @@ namespace SaleSystem.API.Controllers
         {
             var response = new Response<List<CategoryDTO>>();
             try
-            {     //
+            {     ///
                 response.value = await _categoryService.GetList();
                 response.status = Constants.Status.True;
             }
