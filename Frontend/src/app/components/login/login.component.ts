@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -22,12 +23,15 @@ export class LoginComponent implements OnInit {
     private utService: UtilityService
   ) {
     this.formLogin = this.fb.group({
-      email: ['', Validators.email, Validators.required],
+      email: ['', Validators.email],
       password: ['', Validators.required],
     });
   }
-
-  ngOnInit(): void {}
+  // test
+  ngOnInit(): void {
+    if (localStorage.getItem(environment.keyLocalAuth) != null)
+      this.router.navigateByUrl('/pages');
+  }
 
   LoginUser() {
     this.showLoading = true;
