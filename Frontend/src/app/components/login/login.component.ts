@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
-  // 
+  //
   ngOnInit(): void {
     if (localStorage.getItem(environment.keyLocalAuth) != null)
       this.router.navigateByUrl('/pages');
