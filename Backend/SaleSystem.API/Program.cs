@@ -1,8 +1,10 @@
+using SaleSystem.API.Extensions;
 using SaleSystem.Core;
 using SaleSystem.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+CorsPolicyExtensions.ConfigureCorsPolicy(builder.Services, builder.Configuration);
 InfraConfiguration.InjectDependence(builder.Services, builder.Configuration);
 CoreConfiguration.RegisterServices(builder.Services);
 
@@ -19,7 +21,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
-
+app.UseCors("newPolicy");
 app.MapControllers();
-
 app.Run();

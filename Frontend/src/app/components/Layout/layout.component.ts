@@ -20,7 +20,9 @@ export class LayoutComponent implements OnInit {
     private utService: UtilityService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getMenu();
+  }
 
   getMenu() {
     const user = this.utService.getSessionUser();
