@@ -1,1 +1,61 @@
-<p>user-dialog works!</p>
+<h2 mat-dialog-title>{{titleAction}} ผู้ใช้งาน</h2>
+<mat-dialog-content>
+  <form [formGroup]="fgUser">
+    <mat-grid-list cols="1" rowHeight="80px">
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>ชื่อผู้ใช้งาน</mat-label>
+          <input matInput autocomplete="off" formControlName="fullName">
+          <mat-icon matSuffix>account-box</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput autocomplete="off" formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>บทบาท</mat-label>
+          <mat-select formControlName="idRole">
+            <mat-option *ngFor="let item of listRole" [value]="item.roleId">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>รหัสผ่าน</mat-label>
+          <input matInput [type]="checkPassword ? 'password': 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="checkPassword = !checkPassword" type="button">
+            <mat-icon matSuffix>{{checkPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>สถานะ</mat-label>
+          <mat-select formControlName="isActive">
+            <mat-option value="1">ใช้งาน</mat-option>
+            <mat-option value="0">ไม่ใช้งาน</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">ยกเลิก</button>
+  <button mat-raised-button mat-dialog-close color="primary" [disabled]="fgUser.invalid"
+    (click)="submitData()">{{buttonAction}}</button>
+</mat-dialog-actions>

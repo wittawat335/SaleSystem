@@ -33,7 +33,7 @@ namespace SaleSystem.Core.Services
             try
             {
                 var query = await _repository.GetList();
-                var list = query.Include(x => x.Role).ToList();
+                var list = query.Include(x => x.Role).ToList().OrderBy(x => x.CreateDate);
 
                 return _mapper.Map<List<UserDTO>>(list);
             }

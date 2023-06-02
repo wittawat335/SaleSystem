@@ -13,10 +13,10 @@ import { UtilityService } from 'src/app/services/utility.service';
   styleUrls: ['./user-dialog.component.css'],
 })
 export class UserDialogComponent implements OnInit {
-  userFg: FormGroup;
+  fgUser: FormGroup;
   checkPassword: boolean = true;
-  titleAction: string = 'New';
-  buttonAction: string = 'Save';
+  titleAction: string = 'เพิ่ม';
+  buttonAction: string = 'บันทึก';
   listRole: Role[] = [];
 
   constructor(
@@ -27,20 +27,20 @@ export class UserDialogComponent implements OnInit {
     private userService: UserService,
     private utService: UtilityService
   ) {
-    this.userFg = this.fb.group({
+    this.fgUser = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', Validators.email],
       idRole: ['', Validators.required],
       password: ['', Validators.required],
-      isActive: ['', Validators.required],
+      isActive: ['1', Validators.required],
     });
 
     if (this.userData != null) {
-      this.titleAction = 'edit';
-      this.buttonAction = 'Update';
+      this.titleAction = 'แก้ไข';
+      this.buttonAction = 'อัพเดท';
     }
 
-    this.userService.GetList().subscribe({
+    this.roleService.GetList().subscribe({
       next: (data) => {
         if (data.status) this.listRole = data.value;
       },
@@ -54,7 +54,7 @@ export class UserDialogComponent implements OnInit {
 
   bindData() {
     if (this.userData != null) {
-      this.userFg.patchValue({
+      this.fgUser.patchValue({
         fullName: this.userData.fullName,
         email: this.userData.email,
         idRole: this.userData.roleId,
@@ -70,11 +70,11 @@ export class UserDialogComponent implements OnInit {
         this.userData == null
           ? '00000000-0000-0000-0000-000000000000'
           : this.userData.userId,
-      fullName: this.userFg.value.fullName,
-      email: this.userFg.value.email,
-      roleId: this.userFg.value.idRole,
-      password: this.userFg.value.password,
-      isActive: parseInt(this.userFg.value.isActive),
+      fullName: this.fgUser.value.fullName,
+      email: this.fgUser.value.email,
+      roleId: this.fgUser.value.idRole,
+      password: this.fgUser.value.password,
+      isActive: parseInt(this.fgUser.value.isActive),
     };
 
     if (this.userData == null) {

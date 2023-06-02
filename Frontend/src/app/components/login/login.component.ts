@@ -44,10 +44,8 @@ export class LoginComponent implements OnInit {
     this.userService.Login(req).subscribe({
       next: (data) => {
         if (data.status) {
-          alert('1');
           this.utService.setSessionUser(data.value);
           this.router.navigate(['pages']);
-          alert('2');
         } else {
           this.utService.showMessage(data.message, 'Oop!');
         }
