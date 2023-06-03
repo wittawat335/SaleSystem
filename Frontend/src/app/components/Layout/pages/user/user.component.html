@@ -10,7 +10,7 @@
   <mat-card-content class="dashboard-card=content">
     <mat-form-field appearance="standard">
       <mat-label>ค้นหา</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+      <input matInput (keyup)="Filter($event)" placeholder="" #input>
     </mat-form-field>
     <div class="mat-elevation-z2">
       <table mat-table [dataSource]="dataSource" matSort>

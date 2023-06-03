@@ -37,7 +37,6 @@ export class UserDialogComponent implements OnInit {
 
     if (this.userData != null) {
       this.titleAction = 'แก้ไข';
-      this.buttonAction = 'อัพเดท';
     }
 
     this.roleService.GetList().subscribe({

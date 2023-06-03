@@ -36,9 +36,9 @@ namespace SaleSystem.Infrastructure.Utility
             public const string Cannot_Update_Data = "Cannot Update Data";
             public const string Cannot_Map_Data = "Cannot Map Data";
             public const string InActive = "This username is inactive";
-            public const string Create_Action = "Successfully Created";
-            public const string Update_Action = "Successfully Updated";
-            public const string Delete_Action = "Successfully Deleted";
+            public const string Create_Action = "ทำการบันทึกข้อมูลเรียบร้อย";
+            public const string Update_Action = "ทำการแก้ไขข้อมูลเรียบร้อย";
+            public const string Delete_Action = "ทำการลบข้อมูลเรียบร้อย";
         }
         public struct Status
         {

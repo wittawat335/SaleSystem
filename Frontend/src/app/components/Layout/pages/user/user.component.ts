@@ -31,14 +31,14 @@ export class UserComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.GetDataTable();
+    this.BindDataTable();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
 
-  GetDataTable() {
+  BindDataTable() {
     this.userService.GetList().subscribe({
       next: (data) => {
         if (data.status) {
@@ -50,7 +50,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     });
   }
 
-  applyFilter(event: Event) {
+  Filter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -62,7 +62,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       })
       .afterClosed()
       .subscribe((result) => {
-        if (result === 'true') this.GetDataTable();
+        if (result === 'true') this.BindDataTable();
       });
   }
 
@@ -74,27 +74,27 @@ export class UserComponent implements OnInit, AfterViewInit {
       })
       .afterClosed()
       .subscribe((result) => {
-        if (result === 'true') this.GetDataTable();
+        if (result === 'true') this.BindDataTable();
       });
   }
 
   Delete(obj: User) {
     Swal.fire({
-      title: 'Do you want delete user?',
-      text: obj.fullName,
+      title: 'คุณต้องการลบ' + ' ' + obj.fullName + ' ' + 'ใช่หรือไม่',
+      //text: obj.fullName,
       icon: 'warning',
       confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Yes',
+      confirmButtonText: 'ใช่',
       showCancelButton: true,
       cancelButtonColor: '#d33',
-      cancelButtonText: 'No',
+      cancelButtonText: 'ไม่ใช่',
     }).then((result) => {
       if (result.isConfirmed) {
         this.userService.Delete(obj.userId).subscribe({
           next: (data) => {
             if (data.status) {
               this.utService.showMessage(data.message, 'success');
-              this.GetDataTable();
+              this.BindDataTable();
             } else {
               this.utService.showMessage(data.message, 'Error');
             }
