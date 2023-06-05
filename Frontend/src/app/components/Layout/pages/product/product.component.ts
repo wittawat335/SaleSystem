@@ -98,7 +98,12 @@ export class ProductComponent implements OnInit, AfterViewInit {
         this.productService.Delete(obj.productId).subscribe({
           next: (data) => {
             if (data.status) {
-              this.utService.showMessage(data.message, 'success');
+              Swal.fire({
+                icon: 'success',
+                title: 'ทำการลบเรียบร้อย',
+                showConfirmButton: false,
+                timer: 1000,
+              });
               this.BindDataTable();
             } else {
               this.utService.showMessage(data.message, 'Error');

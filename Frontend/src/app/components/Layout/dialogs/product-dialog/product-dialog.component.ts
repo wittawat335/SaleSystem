@@ -6,6 +6,7 @@ import { Product } from 'src/app/Interfaces/product';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-dialog',
@@ -62,7 +63,7 @@ export class ProductDialogComponent implements OnInit {
     }
   }
 
-  submitData() {
+  Save() {
     const product: Product = {
       productId: this.productData == null ? 0 : this.productData.productId,
       name: this.formGroup.value.name,
@@ -74,9 +75,13 @@ export class ProductDialogComponent implements OnInit {
     if (this.productData == null) {
       this.productService.Create(product).subscribe({
         next: (data) => {
-          console.log(data);
           if (data.status) {
-            this.utService.showMessage(data.message, 'success');
+            Swal.fire({
+              icon: 'success',
+              title: 'ทำการบันทึกเรียบร้อย',
+              showConfirmButton: false,
+              timer: 1000,
+            });
             this.dialog.close('true');
           } else {
             this.utService.showMessage(data.message, 'error');
@@ -88,7 +93,12 @@ export class ProductDialogComponent implements OnInit {
       this.productService.Update(product).subscribe({
         next: (data) => {
           if (data.status) {
-            this.utService.showMessage(data.message, 'success');
+            Swal.fire({
+              icon: 'success',
+              title: 'ทำการบันทึกเรียบร้อย',
+              showConfirmButton: false,
+              timer: 1000,
+            });
             this.dialog.close('true');
           } else {
             this.utService.showMessage(data.message, 'error');

@@ -133,8 +133,8 @@ export class SaleComponent implements OnInit {
 
             Swal.fire({
               icon: 'success',
-              title: 'Sale Register!',
-              text: `Sale number: ${data.value.documentNumber}`,
+              title: 'บันทึกเรียบร้อย',
+              text: `เลขที่: ${data.value.documentNumber}`,
             });
           } else {
             this.utService.showMessage('rrrrr', 'Oops');

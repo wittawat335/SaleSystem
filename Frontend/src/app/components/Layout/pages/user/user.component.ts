@@ -93,7 +93,12 @@ export class UserComponent implements OnInit, AfterViewInit {
         this.userService.Delete(obj.userId).subscribe({
           next: (data) => {
             if (data.status) {
-              this.utService.showMessage(data.message, 'success');
+              Swal.fire({
+                icon: 'success',
+                title: 'ทำการลบเรียบร้อย',
+                showConfirmButton: false,
+                timer: 1000,
+              });
               this.BindDataTable();
             } else {
               this.utService.showMessage(data.message, 'Error');

@@ -28,8 +28,8 @@ export const MY_DATA_FORMAT = {
 export class SaleHistoryComponent implements OnInit, AfterViewInit {
   formGroup: FormGroup;
   optionsSearch: any[] = [
-    { value: 'Date', description: 'dueDate' },
-    { value: 'Number', description: 'saleNumber' },
+    { value: 'Date', description: 'วันที่' },
+    { value: 'Number', description: 'เลขเอกสาร' },
   ];
 
   displayedColumns: string[] = [
@@ -70,12 +70,12 @@ export class SaleHistoryComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  applyFilter(event: Event) {
+  Filter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  saleSearch() {
+  Search() {
     let startDate: string = '';
     let endDate: string = '';
 
@@ -88,8 +88,6 @@ export class SaleHistoryComponent implements OnInit, AfterViewInit {
         return;
       }
     }
-    console.log(this.formGroup.value.search);
-    console.log(this.formGroup.value.saleNumber);
 
     this.saleService
       .Record(
@@ -101,7 +99,6 @@ export class SaleHistoryComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (data) => {
           if (data.status) {
-            console.log(data.value);
             this.dataSource.data = data.value;
           } else {
             this.utService.showMessage(data.message, 'Oops!');
@@ -111,7 +108,7 @@ export class SaleHistoryComponent implements OnInit, AfterViewInit {
       });
   }
 
-  saleDetail(sale: Sale) {
+  Detail(sale: Sale) {
     this.dialog.open(SaleDetailDialogComponent, {
       data: sale,
       disableClose: true,

@@ -21,7 +21,7 @@
 
       <mat-grid-tile>
         <mat-form-field appearance="outline">
-          <mat-label>บทบาท</mat-label>
+          <mat-label>ตำแหน่ง</mat-label>
           <mat-select formControlName="idRole">
             <mat-option *ngFor="let item of listRole" [value]="item.roleId">
               {{item.name}}
@@ -57,5 +57,5 @@
 <mat-dialog-actions align="end">
   <button mat-raised-button mat-dialog-close color="warn">ยกเลิก</button>
   <button mat-raised-button mat-dialog-close color="primary" [disabled]="fgUser.invalid"
-    (click)="submitData()">{{buttonAction}}</button>
+    (click)="Save()">{{buttonAction}}</button>
 </mat-dialog-actions>

@@ -6,6 +6,7 @@ import { User } from 'src/app/Interfaces/user';
 import { RoleService } from 'src/app/services/role.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-dialog',
@@ -63,7 +64,7 @@ export class UserDialogComponent implements OnInit {
     }
   }
 
-  submitData() {
+  Save() {
     const data: User = {
       userId:
         this.userData == null
@@ -80,7 +81,12 @@ export class UserDialogComponent implements OnInit {
       this.userService.Register(data).subscribe({
         next: (data) => {
           if (data.status) {
-            this.utService.showMessage(data.message, 'success');
+            Swal.fire({
+              icon: 'success',
+              title: 'ทำการบันทึกเรียบร้อย',
+              showConfirmButton: false,
+              timer: 1000,
+            });
             this.dialog.close('true');
           } else {
             this.utService.showMessage(data.message, 'error');
@@ -92,7 +98,12 @@ export class UserDialogComponent implements OnInit {
       this.userService.Update(data).subscribe({
         next: (data) => {
           if (data.status) {
-            this.utService.showMessage(data.message, 'success');
+            Swal.fire({
+              icon: 'success',
+              title: 'ทำการบันทึกเรียบร้อย',
+              showConfirmButton: false,
+              timer: 1000,
+            });
             this.dialog.close('true');
           } else {
             this.utService.showMessage(data.message, 'error');
