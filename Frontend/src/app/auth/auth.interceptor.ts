@@ -8,12 +8,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { UtilityService } from '../services/utility.service';
 import Swal from 'sweetalert2';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private utService: UtilityService) {}
+  constructor(private router: Router) {}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
