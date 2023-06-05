@@ -56,7 +56,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  newProduct() {
+  Add() {
     this.dialog
       .open(ProductDialogComponent, {
         disableClose: true,
@@ -69,7 +69,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
       });
   }
 
-  updateProduct(data: Product) {
+  Update(data: Product) {
     this.dialog
       .open(ProductDialogComponent, {
         disableClose: true,
@@ -83,7 +83,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
       });
   }
 
-  deleteProduct(obj: Product) {
+  Delete(obj: Product) {
     Swal.fire({
       title: 'คุณต้องการลบ' + ' ' + obj.name + ' ' + 'ใช่หรือไม่',
       //text: data.name,

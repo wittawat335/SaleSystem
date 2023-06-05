@@ -18,10 +18,7 @@ export class UtilityService {
   }
 
   setSessionUser(session: Session) {
-    localStorage.setItem(
-      environment.keyLocalAuth,
-      JSON.stringify(session.token)
-    );
+    localStorage.setItem(environment.keyLocalAuth, session.token);
     localStorage.setItem('user', JSON.stringify(session));
   }
 

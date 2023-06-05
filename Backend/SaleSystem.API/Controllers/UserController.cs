@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SaleSystem.Core.DTO;
 using SaleSystem.Core.Services.Contract;
@@ -18,8 +19,9 @@ namespace SaleSystem.API.Controllers
             _userService = userService;
             _configuration = configuration;
         }
-
+     
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetList()
         {
             var response = new Response<List<UserDTO>>();

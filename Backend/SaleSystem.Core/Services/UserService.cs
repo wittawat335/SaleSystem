@@ -59,7 +59,7 @@ namespace SaleSystem.Core.Services
 
                 User checkUser = query.Include(x => x.Role).First();
                 if (checkUser.IsActive == true)
-                    checkUser.Token = Token(checkUser, key);
+                    checkUser.Token = CreateToken(checkUser, key);
                 else
                     throw new TaskCanceledException("");
 
@@ -71,35 +71,35 @@ namespace SaleSystem.Core.Services
             }
         }
 
+        //public string CreateToken(User user, string key)
+        //{
+        //    try
+        //    {
+        //        List<Claim> claims = new List<Claim>
+        //        {
+        //            new Claim("UserId", user.UserId.ToString()),
+        //            //new Claim("FullName", user.FullName!),
+        //            //new Claim("Email", user.Email!),
+        //        };
+
+        //        var symmetrickey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+        //        var cred = new SigningCredentials(symmetrickey, SecurityAlgorithms.HmacSha512Signature);
+        //        var token = new JwtSecurityToken(
+        //            claims: claims,
+        //            expires: DateTime.Now.AddDays(1),
+        //            signingCredentials: cred
+        //            );
+        //        var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+        //        return jwt;
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
+
         public string CreateToken(User user, string key)
-        {
-            try
-            {
-                List<Claim> claims = new List<Claim>
-                {
-                    new Claim("UserId", user.UserId.ToString()),
-                    //new Claim("FullName", user.FullName!),
-                    //new Claim("Email", user.Email!),
-                };
-
-                var symmetrickey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-                var cred = new SigningCredentials(symmetrickey, SecurityAlgorithms.HmacSha512Signature);
-                var token = new JwtSecurityToken(
-                    claims: claims,
-                    expires: DateTime.Now.AddDays(1),
-                    signingCredentials: cred
-                    );
-                var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-                return jwt;
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        public string Token(User user, string key)
         {
             try
             {

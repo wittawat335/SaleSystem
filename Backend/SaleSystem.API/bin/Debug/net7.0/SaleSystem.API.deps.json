@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "SaleSystem.API/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.5",
           "Microsoft.AspNetCore.OpenApi": "7.0.5",
           "SaleSystem.Core": "1.0.0",
           "SaleSystem.Infrastructure": "1.0.0",

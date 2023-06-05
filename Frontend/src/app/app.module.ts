@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './shared/shared/shared.module';
 import { LayoutComponent } from './components/Layout/layout.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, LayoutComponent],
@@ -18,11 +20,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     SharedModule,
   ],
   providers: [
-    /*  {
+    UserService,
+    {
       provide: HTTP_INTERCEPTORS,
-      useClass: '',
-      multi: true
-    } */
+      useClass: AuthInterceptor, //from auth/auth.interceptor.ts
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

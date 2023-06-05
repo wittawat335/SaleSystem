@@ -1,7 +1,7 @@
 <h1 style="margin: 20px 0px 0px 40px;">สินค้า</h1>
 <mat-card style="margin: 20px 40px 40px 40px;">
   <mat-card-title>
-    <button mat-raised-button color="primary" (click)="newProduct()">
+    <button mat-raised-button color="primary" (click)="Add()">
       <mat-icon mat-list-icon>add</mat-icon>เพิ่มสินค้า
     </button>
   </mat-card-title>
@@ -12,10 +12,8 @@
       <mat-label>ค้นหา</mat-label>
       <input matInput (keyup)="Filter($event)" placeholder="" #input>
     </mat-form-field>
-
     <div class="mat-elevation-z2">
       <table mat-table [dataSource]="dataSource" matSort>
-
         <!-- Position Column -->
         <ng-container matColumnDef="Name">
           <th mat-header-cell *matHeaderCellDef> ชื่อสินค้า </th>
@@ -40,20 +38,16 @@
         <ng-container matColumnDef="Actions">
           <th mat-header-cell *matHeaderCellDef style="width: 80px;"> </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button color="primary" (click)=" updateProduct(element)">
+            <button mat-icon-button color="primary" (click)=" Update(element)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)=" deleteProduct(element)">
+            <button mat-icon-button color="warn" (click)=" Delete(element)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
         </ng-container>
-
-
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>

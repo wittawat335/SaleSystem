@@ -2,17 +2,12 @@
 using SaleSystem.Core.AutoMapper;
 using SaleSystem.Core.Services;
 using SaleSystem.Core.Services.Contract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SaleSystem.Core
 {
-    public class CoreConfiguration
+    public static class CoreConfiguration
     {
-        public static void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(AutoMapperProfile));
             services.AddScoped<ICategoryService, CategoryService>();

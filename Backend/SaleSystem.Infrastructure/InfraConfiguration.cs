@@ -8,9 +8,9 @@ using SaleSystem.Infrastructure.Utility;
 
 namespace SaleSystem.Infrastructure
 {
-    public class InfraConfiguration
+    public static class InfraConfiguration
     {
-        public static void InjectDependence(IServiceCollection services, IConfiguration configuration)
+        public static void InjectDependence(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<SaleSystemDbContext>(options =>
             {

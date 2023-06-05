@@ -4,9 +4,10 @@ using SaleSystem.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-CorsPolicyExtensions.ConfigureCorsPolicy(builder.Services, builder.Configuration);
-InfraConfiguration.InjectDependence(builder.Services, builder.Configuration);
-CoreConfiguration.RegisterServices(builder.Services);
+builder.Services.ConfigureCorsPolicy(builder.Configuration); // from SaleSystem.API/Extensions
+builder.Services.ConfigureJwtPolicy(builder.Configuration); // from SaleSystem.API/Extensions
+builder.Services.InjectDependence(builder.Configuration); // from SaleSystem.Infrastructure
+builder.Services.RegisterServices(); //from SaleSystem.Core
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -20,7 +21,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
 app.UseCors("newPolicy");
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();

@@ -11,6 +11,8 @@ import { SaleHistoryComponent } from './pages/sale-history/sale-history.componen
 import { ProductDialogComponent } from './dialogs/product-dialog/product-dialog.component';
 import { SaleDetailDialogComponent } from './dialogs/sale-detail-dialog/sale-detail-dialog.component';
 import { UserDialogComponent } from './dialogs/user-dialog/user-dialog.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from 'src/app/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,5 +27,6 @@ import { UserDialogComponent } from './dialogs/user-dialog/user-dialog.component
     SaleDetailDialogComponent,
   ],
   imports: [CommonModule, LayoutRoutingModule, SharedModule],
+  providers: [],
 })
 export class LayoutModule {}
